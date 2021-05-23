@@ -1,0 +1,67 @@
+.cargando {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 20000000;
+  left: 0px;
+  top: 0px;
+}
+
+.fondoCargando {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  opacity: 0.6;
+  background: black;
+}
+
+.contenidoCargando {
+  margin-top: 0px;
+}
+
+.loaderV {
+  height: 5px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.loaderV:before {
+  display: block;
+  position: absolute;
+  content: "";
+  left: -200px;
+  width: 200px;
+  height: 3px;
+  background-color: #2FA4E7;
+  animation: loading 2s linear infinite;
+}
+
+@keyframes loading {
+  from {
+    left: -200px;
+    width: 30%;
+  }
+
+  50% {
+    width: 30%;
+  }
+
+  70% {
+    width: 70%;
+  }
+
+  80% {
+    left: 50%;
+  }
+
+  95% {
+    left: 120%;
+  }
+
+  to {
+    left: 100%;
+  }
+}

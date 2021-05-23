@@ -1,0 +1,70 @@
+<div class="h-100 bg-plum-plate bg-animation" *ngIf="vista">
+    <div class="d-flex h-100 justify-content-center align-items-center">
+        <div class="mx-auto app-login-box col-md-8">
+            <div class="app-logo-inverse mx-auto mb-3"></div>
+            <div class="modal-dialog w-100 mx-auto">
+                <div class="modal-content">
+                    <div class="modal-body" [formGroup]="validateForm">
+                        <div class="h5 modal-title text-center">
+                            <h4 class="mt-2">
+                            <div>Bienvenido,</div>
+                            <span>Inicie sesión con su cuenta.</span></h4>
+                        </div>
+                        <div role="group" class="form-group">
+                            <div>
+                                <input 
+                                    type="email" 
+                                    placeholder="Email" 
+                                    class="form-control"
+                                    id="email"
+                                    name="email"
+                                    formControlName="email">
+                                
+                                <app-template-validator 
+                                    [input]="email">
+                                </app-template-validator>
+                            </div>
+                        </div>
+                        <div role="group" class="form-group">
+                            <div>
+                                <input 
+                                    type="password" 
+                                    placeholder="Contraseña" 
+                                    class="form-control"
+                                    id="password"
+                                    name="password"
+                                    formControlName="password">
+                                
+                                <app-template-validator 
+                                    [input]="password">
+                                </app-template-validator>
+                            </div>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input 
+                                type="checkbox"                
+                                autocomplete="off" 
+                                class="custom-control-input"
+                                value="true"
+                                id="remember" 
+                                name="remember" 
+                                formControlName="remember">
+                            <label for="remember" class="custom-control-label">Mantener la sesión iniciada</label>
+                        </div>
+                        <div class="divider"></div>
+                        <h6 class="mb-0">No estas registrado? <a [routerLink]="" class="text-primary">Crear una cuenta</a></h6>
+                    </div>
+                    <div class="modal-footer clearfix">
+                        <div class="float-left"><a [routerLink]="" class="btn-lg btn btn-link">Recuperar contraseña</a></div>
+                        <div class="float-right">
+                            <button type="button" (click)="onSubmit()" class="btn btn-primary btn-lg">Iniciar sesión</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center text-white opacity-8 mt-3">
+                Copyright © Sentinel 2020
+            </div>
+        </div>
+    </div>
+</div>

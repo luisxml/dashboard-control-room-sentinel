@@ -1,0 +1,59 @@
+<div [ngStyle]="{'padding-top': paddingTop !== undefined ? paddingTop : 'auto' }">
+    <div *ngIf="validate===1; else noValue">
+        <div class="msgCampoNoValido" *ngIf="input.touched">
+            <div *ngIf="!value?.length && input?.errors?.hasOwnProperty('required')">
+                *Este campo no debe estar vacío.
+            </div>
+            <span *ngIf="value?.length>maxlength">
+                *Este campo debe tener máximo {{ maxlength }}
+            </span>
+        </div>
+    </div>
+    
+    <ng-template #noValue>
+        <div class="msgCampoNoValido"  *ngIf="(input.dirty || input.touched) && input.invalid">
+            <div *ngIf="input?.errors?.hasOwnProperty('required')">
+                *Este campo no debe estar vacío.
+            </div>
+        
+            <div *ngIf="input?.errors?.hasOwnProperty('numericInvalid')">
+                *Este campo debe ser numérico
+            </div>
+    
+            <div *ngIf="input?.errors?.hasOwnProperty('letterInvalid')">
+                *Este campo debe contener solo letras
+            </div>
+        
+            <div *ngIf="input?.errors?.hasOwnProperty('alphanumericInvalid')">
+                *Existen caracteres no permitidos
+            </div>
+    
+            <div *ngIf="input?.errors?.hasOwnProperty('dateInvalid')">
+                *Este campo debe tener el formato dd/mm/aaaa
+            </div>
+    
+            <div *ngIf="input?.errors?.hasOwnProperty('emailInvalid')">
+                *El email es incorrecto
+            </div>
+    
+            <span *ngIf="!input?.errors?.hasOwnProperty('numericInvalid') && !input?.errors?.hasOwnProperty('emailInvalid') && !input?.errors?.hasOwnProperty('letterInvalid') && (input?.errors?.minlength || input?.errors?.maxlength)">
+                <span *ngIf="input?.errors?.minlength">
+                    *Este campo debe tener mínimo {{ input?.errors?.minlength.requiredLength }}
+                </span>
+                <span *ngIf="input?.errors?.maxlength">
+                    *Este campo debe tener máximo {{ input?.errors?.maxlength.requiredLength }}
+                </span>
+            </span>
+    
+            <span *ngIf="!input?.errors?.hasOwnProperty('numericInvalid') && !input?.errors?.hasOwnProperty('emailInvalid') && !input?.errors?.hasOwnProperty('letterInvalid') && (input?.errors?.min || input?.errors?.max)">
+                <span *ngIf="input?.errors?.min">
+                    *Este campo debe ser mayor o igual a {{ input?.errors?.min.min }}
+                    </span>
+                <span *ngIf="input?.errors?.maxlength">
+                    *Este campo debe ser menor o igual a {{ input?.errors?.max.max }}
+                </span>
+            </span>
+        </div>
+    </ng-template>
+    <!-- {{ input.errors | json }} -->
+</div>
